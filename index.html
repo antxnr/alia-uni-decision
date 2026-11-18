@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Alia's shortlist of university courses and UCAS choices for 2027 entry.">
+  <meta name="theme-color" content="#1f4e5f">
+  <title>Alia's University Decision</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%93%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <h1 class="site-title">Alia's University Decision</h1>
+      <p class="countdown" id="countdown" aria-live="off">
+        <span class="countdown-label">UCAS deadline</span>
+        <span class="countdown-value" id="countdown-value">13 Jan 2027, 18:00 UK</span>
+      </p>
+    </div>
+    <nav class="tabbar" aria-label="Sections">
+      <div class="tabbar-inner" role="tablist" aria-label="Sections">
+        <button role="tab" id="tab-overview" aria-controls="overview" aria-selected="true" data-tab="overview">
+          <span class="tab-icon" aria-hidden="true">🧭</span><span class="tab-text">Overview</span>
+        </button>
+        <button role="tab" id="tab-joint-honours" aria-controls="joint-honours" aria-selected="false" tabindex="-1" data-tab="joint-honours">
+          <span class="tab-icon" aria-hidden="true">🔗</span><span class="tab-text">Joint honours</span>
+        </button>
+        <button role="tab" id="tab-my-5" aria-controls="my-5" aria-selected="false" tabindex="-1" data-tab="my-5">
+          <span class="tab-icon" aria-hidden="true">⭐</span><span class="tab-text">My 5 <span class="pick-count" id="pick-count">0/5</span></span>
+        </button>
+        <button role="tab" id="tab-dates" aria-controls="dates" aria-selected="false" tabindex="-1" data-tab="dates">
+          <span class="tab-icon" aria-hidden="true">📅</span><span class="tab-text">Dates &amp; checklist</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="load-error" id="load-error" hidden>
+      <p><strong>The course data couldn't load.</strong> If you opened this file straight from your computer, run it through a local web server instead (see README). On the live site, try refreshing.</p>
+    </div>
+
+    <!-- 1. Overview -->
+    <section role="tabpanel" id="overview" aria-labelledby="tab-overview" class="panel">
+      <h2>Overview</h2>
+      <p class="lede">Every subject area you could study with Chemistry, Biology and Psychology. Use it to spot what sparks your interest, then look at the <a href="#joint-honours">Joint honours</a> tab for real courses.</p>
+
+      <div class="filters">
+        <div class="field">
+          <label for="search">Search subjects</label>
+          <input type="search" id="search" placeholder="e.g. neuroscience" autocomplete="off">
+        </div>
+        <div class="field field-check">
+          <input type="checkbox" id="star-only">
+          <label for="star-only">Only show subjects that use my subjects (★)</label>
+        </div>
+      </div>
+
+      <p class="key"><span aria-hidden="true">★</span> uses your subjects directly · <span aria-hidden="true">⚠</span> often also needs A-level Maths or Physics (or a foundation year)</p>
+      <p class="sr-only" id="result-count" role="status" aria-live="polite"></p>
+
+      <div id="disciplines" class="disciplines"></div>
+      <p class="empty-search" id="empty-search" hidden>No subjects match that search. Try a shorter word.</p>
+    </section>
+
+    <!-- 2. Joint honours -->
+    <section role="tabpanel" id="joint-honours" aria-labelledby="tab-joint-honours" class="panel" hidden>
+      <h2>Joint honours</h2>
+
+      <div class="card explainer">
+        <h3>What is a joint honours degree?</h3>
+        <p>You study two subjects in the time of one degree, usually 3 years (4 with a placement, a year abroad, or in Scotland). The word in the course title shows the split.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption class="sr-only">How to read a joint honours course title</caption>
+            <thead><tr><th scope="col">Title looks like</th><th scope="col">Format</th><th scope="col">Split</th></tr></thead>
+            <tbody>
+              <tr><td>Biology <strong>and</strong> Psychology</td><td>Joint honours</td><td>~50/50</td></tr>
+              <tr><td>Psychology <strong>with</strong> Biology</td><td>Major/minor</td><td>~75/25</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pros-cons">
+          <div>
+            <h4><span aria-hidden="true">👍</span> Pros</h4>
+            <ul>
+              <li>Keeps two career paths open</li>
+              <li>Stands out if you can explain why the two fit together</li>
+              <li>Same chance of a good degree as single honours</li>
+              <li>Business is easy to add as a minor</li>
+            </ul>
+          </div>
+          <div>
+            <h4><span aria-hidden="true">👎</span> Cons</h4>
+            <ul>
+              <li>Less depth in each subject</li>
+              <li>Possible timetable clashes between departments</li>
+              <li>Psychology accreditation can be lost on some courses</li>
+              <li>Can feel like double the background reading</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="aside"><strong>Another option:</strong> Natural Sciences (e.g. Durham, Bath, UCL) is one flexible degree mixing biology, chemistry and psychology modules.</p>
+      </div>
+
+      <h3>Combinations that suit you</h3>
+      <div class="table-wrap">
+        <table class="combos">
+          <caption class="sr-only">Joint honours combinations that fit Chemistry, Biology and Psychology</caption>
+          <thead><tr><th scope="col">Combination</th><th scope="col">Why it fits</th><th scope="col">Leads to</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Biology &amp; Psychology</th><td>Uses all three subjects</td><td>Neuroscience, clinical research, health psychology</td></tr>
+            <tr><th scope="row">Psychology &amp; (Cognitive) Neuroscience</th><td>Brain biology plus behaviour</td><td>Research, clinical psychology, pharma</td></tr>
+            <tr><th scope="row">Chemistry &amp; Biology / Biochemistry</th><td>Your two strongest sciences</td><td>Lab science, pharma, biotech</td></tr>
+            <tr><th scope="row">Psychology &amp; Criminology</th><td>Forensic angle, less lab work</td><td>Probation, police, forensic psychology</td></tr>
+            <tr><th scope="row">Psychology &amp; Education</th><td>Child development</td><td>Teaching, educational psychology</td></tr>
+            <tr><th scope="row">Psychology &amp; Business</th><td>Consumer and workplace behaviour</td><td>Marketing, HR, UX research</td></tr>
+            <tr><th scope="row">Biology / Life Sciences &amp; Business</th><td>Science plus commercial skills</td><td>Biotech, pharma, consulting</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="sl-science-h">Shortlist: science joint degrees</h3>
+      <p class="hint">Tap a course name for the university's page, or a university name for its UCAS page.</p>
+      <div class="shortlist" id="sl-science" aria-labelledby="sl-science-h"></div>
+
+      <h3 id="sl-business-h">Shortlist: science + business</h3>
+      <div class="shortlist" id="sl-business" aria-labelledby="sl-business-h"></div>
+      <p class="aside"><strong>Why science should lead:</strong> business is the easier subject to add later (a one-year master's in management). Adding science later is much harder.</p>
+    </section>
+
+    <!-- 3. My 5 -->
+    <section role="tabpanel" id="my-5" aria-labelledby="tab-my-5" class="panel" hidden>
+      <h2>My 5 choices</h2>
+      <p class="lede">UCAS lets you pick 5. A good mix is <strong>1 aspirational, 3 match, 1 safer</strong> (stretch courses count as aspirational).</p>
+
+      <div class="mix" id="mix" aria-live="polite"></div>
+      <ol class="picks" id="picks"></ol>
+
+      <div class="empty-state" id="picks-empty" hidden>
+        <p class="empty-emoji" aria-hidden="true">🎓</p>
+        <p><strong>No courses yet.</strong></p>
+        <p>Browse the shortlists on the Joint honours tab and tap “Add to my 5”.</p>
+        <a class="btn" href="#joint-honours">Go to Joint honours</a>
+      </div>
+    </section>
+
+    <!-- 4. Dates & checklist -->
+    <section role="tabpanel" id="dates" aria-labelledby="tab-dates" class="panel" hidden>
+      <h2>Key dates &amp; checklist</h2>
+
+      <div class="table-wrap">
+        <table class="dates-table">
+          <caption class="sr-only">Key UCAS dates for 2027 entry</caption>
+          <thead><tr><th scope="col">Date</th><th scope="col">What happens</th></tr></thead>
+          <tbody>
+            <tr class="highlight"><th scope="row">13 January 2027, 18:00 UK time</th><td>Main UCAS deadline for equal consideration on most courses</td></tr>
+            <tr><th scope="row">25 February 2027</th><td>UCAS Extra opens for anyone without an offer</td></tr>
+            <tr><th scope="row">August 2027</th><td>A-level results day</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>UCAS allows 5 choices. Suggested mix: 1 aspirational, 3 match, 1 safer.</p>
+
+      <h3 id="checklist-h">Checklist</h3>
+      <p class="progress" id="checklist-progress" aria-live="polite"></p>
+      <ul class="checklist" id="checklist" aria-labelledby="checklist-h">
+        <li><input type="checkbox" id="chk-1" data-key="confirm-runs"><label for="chk-1">Confirm each course still runs for 2027 entry on UCAS.</label></li>
+        <li><input type="checkbox" id="chk-2" data-key="check-offer"><label for="chk-2">Check each university's own 2027 page for the offer.</label></li>
+        <li><input type="checkbox" id="chk-3" data-key="bps"><label for="chk-3">Check BPS accreditation if psychology careers might interest you.</label></li>
+        <li><input type="checkbox" id="chk-4" data-key="ibms"><label for="chk-4">Check IBMS accreditation if NHS biomedical scientist work is a goal.</label></li>
+        <li><input type="checkbox" id="chk-5" data-key="pick-5"><label for="chk-5">Pick 5 choices: 1 aspirational, 3 match, 1 safer.</label></li>
+        <li><input type="checkbox" id="chk-6" data-key="statement"><label for="chk-6">Write one personal statement that fits all 5 courses.</label></li>
+        <li><input type="checkbox" id="chk-7" data-key="submit"><label for="chk-7">Submit before 18:00 UK time on 13 January 2027.</label></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Offers change each year: always check the university's own 2027 page.</p>
+    <details class="sources">
+      <summary>Sources</summary>
+      <ul>
+        <li><a href="https://www.ucas.com/events/2027-entry-deadline-for-all-undergraduate-courses-except-those-with-a-15-october-deadline-475546" target="_blank" rel="noopener noreferrer">UCAS 2027 deadline</a></li>
+        <li><a href="https://www.theprofs.co.uk/student-resources/university-applications/ucas-key-dates-and-deadlines-for-2027-entry/" target="_blank" rel="noopener noreferrer">UCAS key dates (The Profs)</a></li>
+        <li><a href="https://blogs.kcl.ac.uk/betweentheacts/the-joint-honours-degree-faqs" target="_blank" rel="noopener noreferrer">Joint honours FAQs (KCL)</a></li>
+        <li>Course and UCAS pages as linked on the Joint honours tab.</li>
+      </ul>
+    </details>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
