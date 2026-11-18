@@ -1,0 +1,28 @@
+[
+  { "name": "Life sciences", "courses": [
+    { "n": "Biology", "star": true }, { "n": "Biological Sciences", "star": true }, { "n": "Biochemistry", "star": true }, { "n": "Biomedical Science", "star": true }, { "n": "Molecular & Cellular Biology", "star": true }, { "n": "Genetics", "star": true }, { "n": "Microbiology", "star": true }, { "n": "Immunology", "star": true }, { "n": "Physiology", "star": true }, { "n": "Pharmacology", "star": true }, { "n": "Neuroscience", "star": true }, { "n": "Zoology" }, { "n": "Marine Biology" }, { "n": "Ecology & Conservation" }, { "n": "Plant Science" }, { "n": "Biotechnology", "star": true }, { "n": "Forensic Science", "star": true } ] },
+  { "name": "Chemistry and physical sciences", "courses": [
+    { "n": "Chemistry", "star": true, "warn": true, "note": "some want Maths" }, { "n": "Medicinal Chemistry", "star": true }, { "n": "Pharmaceutical Science", "star": true }, { "n": "Environmental Science" }, { "n": "Natural Sciences", "warn": true, "note": "top courses" }, { "n": "Earth Sciences / Geology" } ] },
+  { "name": "Psychology and the brain", "courses": [
+    { "n": "Psychology", "star": true, "note": "choose BPS-accredited" }, { "n": "Psychology with Neuroscience", "star": true }, { "n": "Cognitive Science" }, { "n": "Behavioural Science" }, { "n": "Forensic Psychology" }, { "n": "Criminology & Psychology" }, { "n": "Sport & Exercise Psychology" }, { "n": "Child Development" } ] },
+  { "name": "Medicine and dentistry", "tag": "2028 entry now", "courses": [
+    { "n": "Medicine", "star": true, "note": "UCAT required" }, { "n": "Dentistry", "star": true }, { "n": "Graduate-entry Medicine" } ] },
+  { "name": "Allied health professions", "courses": [
+    { "n": "Physiotherapy", "star": true }, { "n": "Occupational Therapy", "star": true }, { "n": "Radiography", "warn": true }, { "n": "Speech & Language Therapy", "star": true }, { "n": "Dietetics", "star": true }, { "n": "Paramedic Science" }, { "n": "Operating Department Practice" }, { "n": "Orthoptics" }, { "n": "Podiatry" }, { "n": "Audiology" }, { "n": "Healthcare Science" }, { "n": "Prosthetics & Orthotics", "warn": true } ] },
+  { "name": "Nursing and midwifery", "courses": [
+    { "n": "Adult Nursing" }, { "n": "Children's Nursing" }, { "n": "Mental Health Nursing", "star": true }, { "n": "Learning Disability Nursing" }, { "n": "Midwifery", "star": true } ] },
+  { "name": "Pharmacy and optometry", "courses": [
+    { "n": "Pharmacy (MPharm)", "star": true }, { "n": "Optometry", "star": true }, { "n": "Physician Associate", "note": "usually postgraduate" } ] },
+  { "name": "Animal and veterinary", "courses": [
+    { "n": "Veterinary Medicine", "star": true, "note": "2028 entry" }, { "n": "Veterinary Nursing" }, { "n": "Animal Science" }, { "n": "Animal Behaviour", "star": true }, { "n": "Equine Science" }, { "n": "Bioveterinary Science", "star": true } ] },
+  { "name": "Sport, nutrition and public health", "courses": [
+    { "n": "Sport & Exercise Science", "star": true }, { "n": "Nutrition", "star": true }, { "n": "Food Science" }, { "n": "Public Health" }, { "n": "Global Health" }, { "n": "Health Sciences" } ] },
+  { "name": "Engineering and technology", "tag": "⚠ foundation year", "courses": [
+    { "n": "Biomedical Engineering" }, { "n": "Chemical Engineering" }, { "n": "Bioengineering" }, { "n": "Data Science" }, { "n": "Bioinformatics" } ] },
+  { "name": "Social sciences and humanities", "courses": [
+    { "n": "Criminology" }, { "n": "Sociology" }, { "n": "Social Work" }, { "n": "Education / Primary Teaching (QTS)" }, { "n": "Anthropology" }, { "n": "Human Geography" }, { "n": "Philosophy" }, { "n": "Economics", "warn": true } ] },
+  { "name": "Law, business and management", "courses": [
+    { "n": "Law (LLB)" }, { "n": "Business & Management" }, { "n": "Healthcare Management" }, { "n": "Marketing" }, { "n": "HR Management" }, { "n": "Accounting & Finance" } ] },
+  { "name": "Flexible routes", "courses": [
+    { "n": "Liberal Arts" }, { "n": "Joint honours", "note": "see Joint honours tab" }, { "n": "Degree apprenticeships", "note": "earn while studying, no fees" } ] }
+]
