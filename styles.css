@@ -118,13 +118,13 @@ h4 { font-size: 1rem; margin: 0 0 .35rem; }
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 .tabbar-inner {
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(5, 1fr);
   max-width: 960px; margin: 0 auto;
 }
 [role="tab"] {
   appearance: none; border: 0; background: transparent; color: var(--muted);
-  font: inherit; font-size: .75rem; font-weight: 600; line-height: 1.15;
-  min-height: var(--tabbar-h); padding: 6px 4px;
+  font: inherit; font-size: .7rem; font-weight: 600; line-height: 1.15;
+  min-height: var(--tabbar-h); padding: 6px 2px; min-width: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
   cursor: pointer; position: relative;
 }
@@ -274,6 +274,10 @@ tbody th { font-weight: 600; }
   margin: 2px 0 0; font-size: .82rem; background: var(--warn-bg); color: var(--warn-text);
   border: 1px solid var(--warn-border); border-radius: 8px; padding: 6px 9px;
 }
+.course .tip {
+  margin: 2px 0 0; font-size: .82rem; background: var(--surface-2); color: var(--text);
+  border-radius: 8px; padding: 6px 9px;
+}
 .course .actions { margin-top: auto; padding-top: 6px; }
 .course .actions .btn { width: 100%; }
 .course .inline-msg { margin: 6px 0 0; font-size: .85rem; color: var(--warn-text); font-weight: 600; }
@@ -330,7 +334,31 @@ tbody th { font-weight: 600; }
 .empty-state { text-align: center; padding: 32px 16px; background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius); }
 .empty-state p { margin: .3rem 0; }
 .empty-emoji { font-size: 2.5rem; }
-.empty-state .btn { margin-top: .75rem; }
+.empty-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: .75rem; }
+
+/* Single honours */
+.key-message {
+  border-left: 4px solid var(--accent); background: var(--accent-soft);
+  padding: 10px 14px; border-radius: 0 10px 10px 0; margin: .75rem 0;
+}
+.jump { margin: 1.25rem 0 .5rem; }
+.jump-label { margin: 0 0 6px; font-weight: 600; font-size: .9rem; }
+.jump-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.chip-btn {
+  appearance: none; font: inherit; font-size: .88rem; font-weight: 600; cursor: pointer;
+  min-height: 36px; padding: 4px 12px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--accent);
+}
+.chip-btn:hover { background: var(--accent-soft); }
+.subject-block { margin-top: 2rem; scroll-margin-top: 120px; }
+.subject-block h3 { margin: 0 0 .25rem; scroll-margin-top: 120px; }
+.subject-block h3:focus { outline: none; }
+.subject-block h3:focus-visible { outline: 3px solid var(--focus); }
+.subject-blurb { margin: 0 0 .25rem; color: var(--muted); font-size: .93rem; }
+.subject-links { margin: 0 0 .75rem; font-size: .9rem; }
+.group-heading {
+  margin-top: 2.5rem; padding-top: 1.25rem; border-top: 2px dashed var(--border); font-size: 1.3rem;
+}
 
 /* Checklist */
 .progress { font-weight: 600; color: var(--muted); margin: 0 0 .5rem; }

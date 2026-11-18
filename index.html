@@ -26,6 +26,9 @@
         <button role="tab" id="tab-overview" aria-controls="overview" aria-selected="true" data-tab="overview">
           <span class="tab-icon" aria-hidden="true">🧭</span><span class="tab-text">Overview</span>
         </button>
+        <button role="tab" id="tab-single-honours" aria-controls="single-honours" aria-selected="false" tabindex="-1" data-tab="single-honours">
+          <span class="tab-icon" aria-hidden="true">🎯</span><span class="tab-text">Single honours</span>
+        </button>
         <button role="tab" id="tab-joint-honours" aria-controls="joint-honours" aria-selected="false" tabindex="-1" data-tab="joint-honours">
           <span class="tab-icon" aria-hidden="true">🔗</span><span class="tab-text">Joint honours</span>
         </button>
@@ -47,7 +50,7 @@
     <!-- 1. Overview -->
     <section role="tabpanel" id="overview" aria-labelledby="tab-overview" class="panel">
       <h2>Overview</h2>
-      <p class="lede">Every subject area you could study with Chemistry, Biology and Psychology. Use it to spot what sparks your interest, then look at the <a href="#joint-honours">Joint honours</a> tab for real courses.</p>
+      <p class="lede">Every subject area you could study with Chemistry, Biology and Psychology. Use it to spot what sparks your interest, then select your top 5 from the <a href="#single-honours">single</a> and <a href="#joint-honours">joint honours</a> tabs.</p>
 
       <div class="filters">
         <div class="field">
@@ -67,7 +70,44 @@
       <p class="empty-search" id="empty-search" hidden>No subjects match that search. Try a shorter word.</p>
     </section>
 
-    <!-- 2. Joint honours -->
+    <!-- 2. Single honours -->
+    <section role="tabpanel" id="single-honours" aria-labelledby="tab-single-honours" class="panel" hidden>
+      <h2>Single honours</h2>
+
+      <div class="card explainer">
+        <h3>Single or joint honours?</h3>
+        <p>A <strong>single honours</strong> degree focuses on one subject for the whole course, for example Psychology BSc. A <strong>joint honours</strong> degree splits your time between two subjects (see the <a href="#joint-honours">Joint honours</a> tab).</p>
+        <p class="key-message"><strong>Neither is more prestigious or better than the other.</strong> Universities, employers and postgraduate courses value both equally, and you can get the same degree classification either way. It simply comes down to personal preference: going deep on one subject you love, or combining two that both interest you.</p>
+        <div class="pros-cons">
+          <div>
+            <h4>Single honours suits you if…</h4>
+            <ul>
+              <li>One subject clearly excites you most</li>
+              <li>You want depth and lots of module choice in that subject</li>
+              <li>You want a clear route to a professional body (e.g. BPS, IBMS, GPhC, HCPC)</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Joint honours suits you if…</h4>
+            <ul>
+              <li>You can't choose between two subjects</li>
+              <li>You like seeing how two fields connect</li>
+              <li>You want to keep two career paths open</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <nav class="jump" aria-label="Jump to subject">
+        <p class="jump-label" id="jump-label">Jump to:</p>
+        <ul class="jump-list" id="jump-list" aria-labelledby="jump-label"></ul>
+      </nav>
+      <p class="hint">Tap a course name for the university's page, or a university name for its UCAS page.</p>
+
+      <div id="single-subjects"></div>
+    </section>
+
+    <!-- 3. Joint honours -->
     <section role="tabpanel" id="joint-honours" aria-labelledby="tab-joint-honours" class="panel" hidden>
       <h2>Joint honours</h2>
 
@@ -147,8 +187,11 @@
       <div class="empty-state" id="picks-empty" hidden>
         <p class="empty-emoji" aria-hidden="true">🎓</p>
         <p><strong>No courses yet.</strong></p>
-        <p>Browse the shortlists on the Joint honours tab and tap “Add to my 5”.</p>
-        <a class="btn" href="#joint-honours">Go to Joint honours</a>
+        <p>Browse the Single honours and Joint honours tabs and tap “Add to my 5”.</p>
+        <div class="empty-actions">
+          <a class="btn" href="#single-honours">Single honours</a>
+          <a class="btn" href="#joint-honours">Joint honours</a>
+        </div>
       </div>
     </section>
 
@@ -192,7 +235,7 @@
         <li><a href="https://www.ucas.com/events/2027-entry-deadline-for-all-undergraduate-courses-except-those-with-a-15-october-deadline-475546" target="_blank" rel="noopener noreferrer">UCAS 2027 deadline</a></li>
         <li><a href="https://www.theprofs.co.uk/student-resources/university-applications/ucas-key-dates-and-deadlines-for-2027-entry/" target="_blank" rel="noopener noreferrer">UCAS key dates (The Profs)</a></li>
         <li><a href="https://blogs.kcl.ac.uk/betweentheacts/the-joint-honours-degree-faqs" target="_blank" rel="noopener noreferrer">Joint honours FAQs (KCL)</a></li>
-        <li>Course and UCAS pages as linked on the Joint honours tab.</li>
+        <li>Course and UCAS pages as linked on the Single honours and Joint honours tabs.</li>
       </ul>
     </details>
   </footer>

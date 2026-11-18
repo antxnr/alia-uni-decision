@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  var TABS = ['overview', 'joint-honours', 'my-5', 'dates'];
+  var TABS = ['overview', 'single-honours', 'joint-honours', 'my-5', 'dates'];
   var MAX_PICKS = 5;
   var DEADLINE = Date.UTC(2027, 0, 13, 18, 0, 0); // 13 Jan 2027 18:00 GMT (UK time in January)
   var KEYS = { picks: 'alia.picks', checklist: 'alia.checklist', tab: 'alia.tab' };
@@ -13,6 +13,7 @@
   var courses = [];
   var courseById = {};
   var picks = [];
+  var subjects = [];
 
   /* ---------- storage (always guarded) ---------- */
   function load(key, fallback) {
@@ -92,7 +93,7 @@
       panel.hidden = !on;
     });
     save(KEYS.tab, name);
-    var titles = { 'joint-honours': 'Joint honours', 'my-5': 'My 5 choices', dates: 'Key dates & checklist' };
+    var titles = { 'single-honours': 'Single honours', 'joint-honours': 'Joint honours', 'my-5': 'My 5 choices', dates: 'Key dates & checklist' };
     document.title = (titles[name] ? titles[name] + ' · ' : '') + "Alia's University Decision";
     if (opts.focusTab) document.getElementById('tab-' + name).focus();
     if (opts.scrollTop) window.scrollTo(0, 0);
@@ -202,8 +203,68 @@
     renderOverview();
   }
 
+  /* ---------- single honours ---------- */
+  function subjectAnchor(sub) { return 'subj-' + sub.id; }
+
+  function renderSingle() {
+    var wrap = document.getElementById('single-subjects');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    var groups = [
+      { key: 'core', title: null },
+      { key: 'wildcard', title: 'Wild cards', intro: 'Less obvious options that still use your subjects. Several lead to a regulated profession, such as pharmacist or speech and language therapist.' }
+    ];
+    groups.forEach(function (g) {
+      var subs = subjects.filter(function (s) { return s.group === g.key; });
+      if (!subs.length) return;
+      if (g.title) {
+        wrap.appendChild(el('h3', { class: 'group-heading', text: g.title }));
+        if (g.intro) wrap.appendChild(el('p', { class: 'hint', text: g.intro }));
+      }
+      subs.forEach(function (sub) {
+        var list = courses
+          .filter(function (c) { return c.list === 'single' && c.subject === sub.id; })
+          .sort(function (a, b) { return TIER_ORDER[a.tier] - TIER_ORDER[b.tier]; });
+        if (!list.length) return;
+        var headingId = subjectAnchor(sub);
+        var links = el('p', { class: 'subject-links' });
+        if (sub.ucasGuide) links.appendChild(extLink(sub.ucasGuide, 'UCAS ' + sub.name.toLowerCase() + ' guide'));
+        if (sub.ucasGuide && sub.ucasSearch) links.appendChild(el('span', { 'aria-hidden': 'true', class: 'sep', text: ' · ' }));
+        if (sub.ucasSearch) links.appendChild(extLink(sub.ucasSearch, 'See all ' + sub.name.toLowerCase() + ' courses on UCAS'));
+
+        var grid = el('div', { class: 'shortlist' });
+        list.forEach(function (c) { grid.appendChild(courseCard(c)); });
+
+        wrap.appendChild(el('section', { class: 'subject-block', 'aria-labelledby': headingId }, [
+          el('h3', { id: headingId, tabindex: '-1', text: sub.name }),
+          sub.blurb ? el('p', { class: 'subject-blurb', text: sub.blurb }) : null,
+          links,
+          grid
+        ]));
+      });
+    });
+  }
+
+  function initJump() {
+    var ul = document.getElementById('jump-list');
+    if (!ul) return;
+    subjects.filter(function (sub) {
+      return courses.some(function (c) { return c.list === 'single' && c.subject === sub.id; });
+    }).forEach(function (sub) {
+      var b = el('button', { type: 'button', class: 'chip-btn', text: sub.name });
+      b.addEventListener('click', function () {
+        var h = document.getElementById(subjectAnchor(sub));
+        if (!h) return;
+        h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        h.focus({ preventScroll: true });
+      });
+      ul.appendChild(el('li', null, [b]));
+    });
+  }
+
   /* ---------- shortlists ---------- */
   function renderShortlists() {
+    renderSingle();
     ['science', 'business'].forEach(function (list) {
       var wrap = document.getElementById('sl-' + list);
       wrap.innerHTML = '';
@@ -236,6 +297,7 @@
       el('p', { class: 'uni' }, [extLink(uni.ucas, uni.name)]),
       el('p', { class: 'offer' }, ['Typical offer: ', el('strong', { text: c.offer })]),
       el('p', { class: 'why', text: c.why }),
+      c.tip ? el('p', { class: 'tip' }, [el('strong', { text: 'Good to know: ' }), c.tip]) : null,
       c.note ? el('p', { class: 'note' }, [el('span', { 'aria-hidden': 'true', text: '⚠ ' }), c.note]) : null,
       el('div', { class: 'actions' }, [btn])
     ]);
@@ -270,7 +332,7 @@
     renderPicks();
     if (focusId) {
       var b = document.querySelector('.course [data-id="' + focusId + '"]');
-      if (b && document.getElementById('joint-honours').hidden === false) b.focus();
+      if (b && b.offsetParent !== null) b.focus();
     }
   }
 
@@ -411,14 +473,16 @@
   updateCountdown();
   setInterval(updateCountdown, 30000);
 
-  Promise.all([getJSON('data/universities.json'), getJSON('data/courses.json'), getJSON('data/disciplines.json')])
+  Promise.all([getJSON('data/universities.json'), getJSON('data/courses.json'), getJSON('data/disciplines.json'), getJSON('data/subjects.json')])
     .then(function (res) {
       unis = res[0];
       courses = res[1];
       disciplines = res[2];
+      subjects = res[3];
       courses.forEach(function (c) { courseById[c.id] = c; });
       picks = (load(KEYS.picks, []) || []).filter(function (id) { return courseById[id]; }).slice(0, MAX_PICKS);
       initOverview();
+      initJump();
       renderShortlists();
       renderPicks();
     })

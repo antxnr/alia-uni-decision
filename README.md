@@ -9,7 +9,8 @@ index.html             page structure and fixed content (explainer, dates, check
 styles.css             all styling (mobile first, light and dark mode)
 app.js                 tabs, countdown, search, shortlists, My 5 and checklist
 data/universities.json university id → name + UCAS provider page
-data/courses.json      shortlisted courses (tier, offer, course page URL, uni id)
+data/courses.json      every shortlisted course; "list" is single / science / business
+data/subjects.json     Single honours subject groups, blurbs and UCAS guide/search links
 data/disciplines.json  Overview tab subject list (★ / ⚠ flags)
 ```
 
